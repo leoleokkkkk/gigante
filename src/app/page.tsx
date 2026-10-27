@@ -76,48 +76,100 @@ export default function HomePage() {
       <Header />
 
       <main className="flex-1">
-        {/* HERO BANNER PRINCIPAL — MOCKUP FIEL */}
-        <section className="relative w-full min-h-[580px] sm:min-h-[640px] lg:min-h-[700px] overflow-hidden bg-black border-b border-neutral-900 flex flex-col justify-center">
+        {/* MOBILE HERO BANNER (100% proporcional — a imagem diminui para caber certinho na tela) */}
+        <section className="sm:hidden w-full bg-black border-b border-neutral-900">
+          {/* Banner Image scaling down with 100% width and natural aspect ratio */}
+          <Link href="/produtos" className="block w-full relative overflow-hidden group">
+            <img
+              src="/images/hero_banner_complete.jpg"
+              alt="Gigante's Multimarcas — Seu Estilo, Sua Marca, Seu Momento"
+              className="w-full h-auto object-contain block select-none"
+            />
+          </Link>
+
+          {/* Mobile Actions & Trust Strip right below the banner */}
+          <div className="px-4 py-4 bg-black space-y-3">
+            <div className="grid grid-cols-2 gap-2.5">
+              <Link
+                href="/produtos"
+                className="py-3 px-4 rounded-xl bg-[#dc2626] hover:bg-[#b91c1c] text-white font-black text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-lg shadow-red-600/30 text-center active:scale-95 transition-all"
+              >
+                <span>EXPLORAR</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+
+              <Link
+                href="/produtos?ofertas=true"
+                className="py-3 px-4 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white font-bold text-xs uppercase tracking-wider border border-neutral-700 flex items-center justify-center gap-1.5 text-center active:scale-95 transition-all"
+              >
+                <Flame className="w-3.5 h-3.5 text-[#ef4444] fill-[#ef4444]" />
+                <span>OFERTAS</span>
+              </Link>
+            </div>
+
+            {/* 3 Compact Trust Badges */}
+            <div className="grid grid-cols-3 gap-2 pt-2 border-t border-neutral-850">
+              <div className="flex flex-col items-center text-center p-2 rounded-xl bg-neutral-900/60 border border-neutral-800/70">
+                <ShieldCheck className="w-4 h-4 text-neutral-200 mb-1" />
+                <span className="text-[10px] font-bold text-white leading-tight">Originais</span>
+                <span className="text-[8.5px] text-neutral-400">Garantidos</span>
+              </div>
+              <div className="flex flex-col items-center text-center p-2 rounded-xl bg-neutral-900/60 border border-neutral-800/70">
+                <Truck className="w-4 h-4 text-neutral-200 mb-1" />
+                <span className="text-[10px] font-bold text-white leading-tight">Todo o Brasil</span>
+                <span className="text-[8.5px] text-neutral-400">Rastreável</span>
+              </div>
+              <div className="flex flex-col items-center text-center p-2 rounded-xl bg-neutral-900/60 border border-neutral-800/70">
+                <Lock className="w-4 h-4 text-neutral-200 mb-1" />
+                <span className="text-[10px] font-bold text-white leading-tight">Compra Segura</span>
+                <span className="text-[8.5px] text-neutral-400">Protegida</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* DESKTOP HERO BANNER (Para telas sm, md, lg, xl — 100% interativo e imersivo) */}
+        <section className="hidden sm:flex relative w-full sm:min-h-[640px] lg:min-h-[700px] overflow-hidden bg-black border-b border-neutral-900 flex-col justify-center">
           {/* Background Sneaker Imagery with Ambient Red Neon Glow */}
           <div className="absolute inset-0 z-0">
             <img
               src="/images/hero_banner_clean.jpg"
               alt="Air Jordan 1 Retro — Gigante's Multimarcas"
-              className="w-full h-full object-cover object-[75%_center] sm:object-center filter brightness-95"
+              className="w-full h-full object-cover object-center filter brightness-95"
             />
-            {/* Vignette gradients to ensure 100% text readability on mobile and desktop */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/50 sm:bg-gradient-to-r sm:from-black sm:via-black/75 sm:to-transparent" />
+            {/* Vignette gradients for text readability on desktop */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
           </div>
 
           {/* Foreground Hero Content Container */}
-          <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 sm:py-16 flex flex-col justify-center">
-            <div className="max-w-2xl space-y-3 sm:space-y-4">
+          <div className="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-8 py-16 flex flex-col justify-center">
+            <div className="max-w-2xl space-y-4">
               {/* Tagline Bar */}
               <div className="flex items-center gap-2">
                 <span className="w-1 h-3.5 bg-[#dc2626] rounded-full inline-block" />
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] sm:tracking-[0.22em] text-neutral-300">
+                <span className="text-xs font-bold uppercase tracking-[0.22em] text-neutral-300">
                   MODA URBANA • SNEAKERS • STREETWEAR
                 </span>
               </div>
 
-              {/* Massive 3-Line Headline - Perfectly responsive on 360px+ screens */}
-              <h1 className="font-display text-[32px] sm:text-5xl md:text-6xl lg:text-[76px] font-black uppercase tracking-tight leading-[0.94] sm:leading-[0.92]">
+              {/* Massive 3-Line Headline */}
+              <h1 className="font-display text-5xl md:text-6xl lg:text-[76px] font-black uppercase tracking-tight leading-[0.92]">
                 <span className="block text-white">SEU ESTILO.</span>
                 <span className="block text-[#dc2626]">SUA MARCA.</span>
                 <span className="block text-white">SEU MOMENTO.</span>
               </h1>
 
               {/* Subtitle Description */}
-              <p className="text-xs sm:text-sm lg:text-base text-neutral-300 font-normal max-w-xl leading-relaxed pt-1 sm:pt-2">
+              <p className="text-sm lg:text-base text-neutral-300 font-normal max-w-xl leading-relaxed pt-2">
                 Os tênis, roupas e acessórios mais exclusivos da cultura streetwear, com qualidade, autenticidade e as melhores marcas do mercado.
               </p>
 
-              {/* Action Buttons - Stacked on Mobile, Inline on Desktop */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-3 sm:pt-5 w-full sm:w-auto">
+              {/* Action Buttons */}
+              <div className="flex items-center gap-4 pt-5">
                 <Link
                   href="/produtos"
-                  className="w-full sm:w-auto justify-center py-3.5 px-6 sm:px-8 rounded-xl bg-[#dc2626] hover:bg-[#b91c1c] text-white font-black text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2.5 shadow-xl shadow-red-600/30 transition-all hover:scale-105 active:scale-95 text-center"
+                  className="py-3.5 px-8 rounded-xl bg-[#dc2626] hover:bg-[#b91c1c] text-white font-black text-sm uppercase tracking-wider flex items-center gap-2.5 shadow-xl shadow-red-600/30 transition-all hover:scale-105 active:scale-95"
                 >
                   <span>EXPLORAR PRODUTOS</span>
                   <ArrowRight className="w-4 h-4" />
@@ -125,16 +177,16 @@ export default function HomePage() {
 
                 <Link
                   href="/produtos?ofertas=true"
-                  className="w-full sm:w-auto justify-center py-3.5 px-6 sm:px-7 rounded-xl bg-black/60 hover:bg-neutral-900 text-white font-bold text-xs sm:text-sm uppercase tracking-wider border border-neutral-700/80 hover:border-white backdrop-blur-md transition-all hover:scale-105 flex items-center gap-2 text-center"
+                  className="py-3.5 px-7 rounded-xl bg-black/60 hover:bg-neutral-900 text-white font-bold text-sm uppercase tracking-wider border border-neutral-700/80 hover:border-white backdrop-blur-md transition-all hover:scale-105 flex items-center gap-2"
                 >
                   <Flame className="w-4 h-4 text-white" />
                   <span>VER OFERTAS</span>
                 </Link>
               </div>
 
-              {/* Bottom Trust & Feature Strip - Compact Glass Cards on Mobile */}
-              <div className="pt-6 sm:pt-10 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-6 border-t border-neutral-800/80 mt-6 sm:mt-8">
-                <div className="flex items-center gap-3 p-2.5 sm:p-0 rounded-xl sm:rounded-none bg-neutral-900/60 sm:bg-transparent border border-neutral-800/70 sm:border-0 backdrop-blur-sm">
+              {/* Bottom Trust & Feature Strip */}
+              <div className="pt-10 grid grid-cols-3 gap-6 border-t border-neutral-800/80 mt-8">
+                <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-xl border border-neutral-800 bg-neutral-900/80 flex items-center justify-center flex-shrink-0 text-white shadow-sm">
                     <ShieldCheck className="w-5 h-5 text-neutral-200" />
                   </div>
@@ -144,7 +196,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 p-2.5 sm:p-0 rounded-xl sm:rounded-none bg-neutral-900/60 sm:bg-transparent border border-neutral-800/70 sm:border-0 backdrop-blur-sm">
+                <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-xl border border-neutral-800 bg-neutral-900/80 flex items-center justify-center flex-shrink-0 text-white shadow-sm">
                     <Truck className="w-5 h-5 text-neutral-200" />
                   </div>
@@ -154,7 +206,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 p-2.5 sm:p-0 rounded-xl sm:rounded-none bg-neutral-900/60 sm:bg-transparent border border-neutral-800/70 sm:border-0 backdrop-blur-sm">
+                <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-xl border border-neutral-800 bg-neutral-900/80 flex items-center justify-center flex-shrink-0 text-white shadow-sm">
                     <Lock className="w-5 h-5 text-neutral-200" />
                   </div>
